@@ -50,13 +50,13 @@ const App = () => {
             console.debug(
               "[scrollTo debug]",
               args,
-              new Error().stack.split("\n").slice(1, 4).join("\n")
+              new Error().stack.split("\n").slice(1, 4).join("\n"),
             );
             return original.apply(this, args);
           };
         }
       } catch (e) {
-        /* ignore */
+        // fail silently
       }
     }
 

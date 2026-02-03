@@ -36,6 +36,9 @@ const About = () => {
 
     // Animazione iniziale più drammatica
     gsap.set(".mask-clip-path", {
+      // Mantiene il centraggio senza usare translateX in CSS
+      xPercent: -50,
+      left: "50%",
       height: "60dvh",
       borderRadius: "1.5rem",
       rotationX: -10,
@@ -76,7 +79,7 @@ const About = () => {
         textContainerRef.current,
         { opacity: 1, y: 0 },
         { opacity: 0, y: 30, duration: 0.3 },
-        0
+        0,
       );
     }
   });
@@ -288,11 +291,11 @@ const About = () => {
 
         const targetRotateX = Math.max(
           Math.min(deltaY * adjustedMaxTilt, adjustedMaxTilt),
-          -adjustedMaxTilt
+          -adjustedMaxTilt,
         );
         const targetRotateY = Math.max(
           Math.min(-deltaX * adjustedMaxTilt, adjustedMaxTilt),
-          -adjustedMaxTilt
+          -adjustedMaxTilt,
         );
 
         const easing = 0.08;
@@ -389,19 +392,16 @@ const About = () => {
             perspective: "1000px",
             backdropFilter: "blur(0px)",
             transition: "backdrop-filter 0.5s ease",
-          }}
-        >
+          }}>
           {/* Overlay per effetti di luce */}
           <div
             className="image-overlay absolute left-0 top-0 size-full z-10 pointer-events-none"
-            style={{ opacity: 0.2 }}
-          ></div>
+            style={{ opacity: 0.2 }}></div>
 
           {/* Contenitore per le particelle */}
           <div
             ref={particlesRef}
-            className="particle-container absolute left-0 top-0 size-full z-20 pointer-events-none overflow-hidden"
-          ></div>
+            className="particle-container absolute left-0 top-0 size-full z-20 pointer-events-none overflow-hidden"></div>
 
           {/* Immagine principale */}
           <img
